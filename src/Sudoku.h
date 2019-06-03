@@ -9,11 +9,12 @@
 //	Include files.
 #include "Cell.h"
 #include <iostream>
+#include <vector>
 
 //	Class.
 class Sudoku {
 protected:
-	Cell cells[81];
+	std::vector<Cell*> cells;
 
 public:
 	//	Constructors & Destructors.
@@ -22,7 +23,13 @@ public:
 
 	//	Methods.
 	void printSudoku();
+	void fillCell(int row, int column, int number);
+
+	//	Checking rules.
+	void checkRow(int row);
+	void checkColumn(int column);
+	void checkBox(int box);
 
 	//	Getters.
-	Cell* getCells();
+	Cell* getCell(int row, int column);
 };

@@ -6,17 +6,27 @@
 //	Pragma.
 #pragma once
 
+//	Include files.
+#include <iostream>
+
+//	Definitions.
+#define possibleNumbers 9
+
 //	Class interface.
 class Cell {
 protected:
 	int storedNumber;
-	bool candidates[9];
+	bool candidates[possibleNumbers];
 
 public:
 	//	Constructors & Destructors.
 	Cell();
-	Cell(int initValue);
 	~Cell();
+
+	//	Methods.
+	void printCandidates();
+	void strikeCandidate(int falseCandidate);
+	void setNumberAndStrike(int newNumber);
 
 	//	Getters.
 	int getStoredNumber();
@@ -24,5 +34,4 @@ public:
 
 	//	Setters.
 	void setStoredNumber(int newNumber);
-	void strikeCandidate(int falseCandidate);
 };

@@ -15,21 +15,44 @@ Cell::Cell() {
 	}
 }
 
-//	Constructor.
-//	Parameters:
-//		initValue	--	Initial value of the Cell.
-Cell::Cell(int initValue) {
-	//	Init value given, all other candidates are false.
-	storedNumber = initValue;
-	for (unsigned int i = 0; i < sizeof(candidates); i++) {
-		candidates[i] = false;
-	}
-	candidates[storedNumber - 1] = true;
-}
-
 //	Destructor.
 //	Parameters:	none.
 Cell::~Cell() {
+
+}
+
+//	printCandidates	--	Prints all candidate values.
+//	Parameters:	none.
+//	Returns:	void.
+void Cell::printCandidates() {
+	for (unsigned int i = 0; i < sizeof(candidates); i++) {
+		std::cout << "Possibility of " << i + 1 << ": " << candidates[i] << std::endl;
+	}
+}
+
+//	strikeCandidate	--	Strikes a number as a cell candidate.
+//	Parameters:
+//		falseCandidate	--	int.
+//	Returns:	void.
+void Cell::strikeCandidate(int falseCandidate) {
+	candidates[falseCandidate - 1] = false;
+}
+
+//	setNumberAndStrike	--	Sets cell number and strikes all other candidates.
+//	Parameters:
+//		newNumber	--	int.
+//	Returns:	void.
+void Cell::setNumberAndStrike(int newNumber) {
+	//	First set all numbers to false.
+	for (int i = 0; i < possibleNumbers; i++) {
+		candidates[i] = false;
+	}
+	
+	//	Set filled number as only candidate with corrected index.
+	candidates[newNumber - 1] = true;
+
+	//	Set new number.
+	setStoredNumber(newNumber);
 
 }
 
@@ -49,16 +72,8 @@ bool* Cell::getCandidates() {
 
 //	setStoredNumber	--	Overwrites stored number.
 //	Parameters:
-//		newStoredNumber	--	Int with new value.
+//		newStoredNumber	--	int.
 //	Returns:	void.
 void Cell::setStoredNumber(int newStoredNumber) {
 	storedNumber = newStoredNumber;
-}
-
-//	strikeCandidate	--	Strikes a number as a cell candidate.
-//	Parameters:
-//		falseCandidate	--	Int the cell can not be.
-//	Returns:	void.
-void Cell::strikeCandidate(int falseCandidate) {
-	candidates[falseCandidate - 1] = false;
 }

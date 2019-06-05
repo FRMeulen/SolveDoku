@@ -13,10 +13,11 @@ int main() {
 	puzzle->fillCell(2, 4, 9);
 	puzzle->fillCell(5, 9, 1);
 	puzzle->fillCell(8, 2, 4);
-	puzzle->printSudoku();
 
-	puzzle->checkColumn(4);
-	puzzle->getCell(1, 4)->printCandidates();
+	puzzle->checkRow(5);
+	puzzle->checkColumn(5);
+	puzzle->checkBox(5);
+	puzzle->printSudoku();
 
 	return 0;
 }

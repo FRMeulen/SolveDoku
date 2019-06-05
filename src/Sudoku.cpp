@@ -13,6 +13,7 @@
 #define boxesPerRow 3
 #define numbersPerBox 3
 #define ruleCellCount 9
+#define boxDimension 3
 
 //	Constructor.
 //	Parameters:	none.
@@ -90,15 +91,16 @@ void Sudoku::checkRow(int row) {
 	//	Check every cell in row.
 	for (int i = 0; i < ruleCellCount; i++) {
 		//	Skip if empty.
-		if (cells[((row - 1) * 9) + i]->getStoredNumber() <= 0)
+		if (cells[((row - 1) * 9) + i]->getStoredNumber() <= 0) {
 			continue;
+		}
 
 		//	Add to used numbers.
 		used.push_back(cells[((row - 1) * 9) + i]->getStoredNumber());
 	}
 
 	//	Strike off all used numbers.
-	for (unsigned int i = 0; i < sizeof(used); i++) {
+	for (unsigned int i = 0; i < used.size(); i++) {
 		//	In all cells in the row.
 		for (int j = 0; j < ruleCellCount; j++) {
 			cells[((row - 1) * 9) + j]->strikeCandidate(used[i]);
@@ -118,15 +120,61 @@ void Sudoku::checkColumn(int column) {
 		if (cells[(column - 1) + (i * 9)]->getStoredNumber() <= 0)
 			continue;
 
-		//	Add to used numbers.
+		//	Add to used numbers. 
 		used.push_back(cells[(column - 1) + (i * 9)]->getStoredNumber());
 	}
 
 	//	Strike off all used numbers.
-	for (unsigned int i = 0; i < sizeof(used); i++) {
+	for (unsigned int i = 0; i < used.size(); i++) {
 		//	In all cells in the column.
 		for (int j = 0; j < ruleCellCount; j++) {
-			cells[(column - 1) + (i * 9)]->strikeCandidate(used[i]);
+			cells[(column - 1) + (j * 9)]->strikeCandidate(used[i]);
+		}
+	}
+}
+
+//	checkBox	--	Checks a box and strikes off candidates.
+//	Parameters:
+//		box		--	int.
+//	Returns:	void.
+void Sudoku::checkBox(int box) {
+	int startId = -1;
+	switch(box) {
+		case 1	:	startId = 0;	break;
+		case 2	:	startId = 3;	break;
+		case 3	:	startId = 6;	break;
+		case 4	:	startId = 27;	break;
+		case 5	:	startId = 30;	break;
+		case 6	:	startId = 33;	break;
+		case 7	:	startId = 54;	break;
+		case 8	:	startId = 57;	break;
+		case 9	:	startId = 60;	break;
+	}
+
+	if (startId == -1)
+		return;
+
+	std::vector<int> used;
+	//	Check row in box.
+	for (int i = 0; i < boxDimension; i++) {
+		//	Check column in row.
+		for (int j = 0; j < boxDimension; j++) {
+			if (cells[startId + (i * 9) + j]->getStoredNumber() <= 0)
+				continue;
+
+			//	Add to used numbers.
+			used.push_back(cells[startId + (i * 9) + j]->getStoredNumber());
+		}
+	}
+
+	//	Strike off all used numbers.
+	for (unsigned int i = 0; i < used.size(); i++) {
+		//	In all rows in the box.
+		for (int j = 0; j < boxDimension; j++) {
+			//	In all columns in the row.
+			for (int k = 0; k < boxDimension; k++) {
+				cells[startId + (j * 9) + k]->strikeCandidate(used[i]);
+			}
 		}
 	}
 }

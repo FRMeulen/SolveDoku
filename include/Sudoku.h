@@ -23,13 +23,13 @@ public:
 
 	//	Methods.
 	void printSudoku();
-	void fillCell(int row, int column, int number);
+	void fillCell(int, int, int);
 
 	//	Checking rules.
-	void checkRow(int row);
-	void checkColumn(int column);
-	void checkBox(int box);
+	void checkRow(int);
+	void checkColumn(int);
+	void checkBox(int);
 
 	//	Getters.
-	Cell* getCell(int row, int column);
+	Cell* getCell(int, int);
 };

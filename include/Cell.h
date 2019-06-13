@@ -25,13 +25,13 @@ public:
 
 	//	Methods.
 	void printCandidates();
-	void strikeCandidate(int falseCandidate);
-	void setNumberAndStrike(int newNumber);
+	void strikeCandidate(int);
+	void setNumberAndStrike(int);
 
 	//	Getters.
 	int getStoredNumber();
 	bool* getCandidates();
 
 	//	Setters.
-	void setStoredNumber(int newNumber);
+	void setStoredNumber(int);
 };

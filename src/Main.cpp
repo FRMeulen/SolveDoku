@@ -8,6 +8,7 @@
 #include "ObserverSudoku.h"
 #include "ObserverBoard.h"
 #include "ObserverRow.h"
+#include "ObserverColumn.h"
 #include <iostream>
 
 int main() {
@@ -17,13 +18,18 @@ int main() {
 	SudokuSubject *puzzle = new SudokuSubject();
 
 	//	Testing.
-	puzzle->getCell(4, 7)->setStoredNumber(8);
+	puzzle->getCell(4, 7)->setNumberAndStrike(8);
 
 	BoardObserver *board = new BoardObserver(puzzle);
-	RowObserver *rows = new RowObserver(puzzle);
+	//RowObserver *rows = new RowObserver(puzzle);
+	ColumnObserver *columns = new ColumnObserver(puzzle);
 
 	//	Testing.
-	puzzle->getCell(4, 1)->printCandidates();
+	std::cout << "Row 7 column 7:" << std::endl;
+	puzzle->getCell(7, 7)->printCandidates();
+	std::cout << std::endl;
+	std::cout << "Row 4 column 7:" << std::endl;
+	puzzle->getCell(4, 7)->printCandidates();
 
 	return 0;
 }

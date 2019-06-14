@@ -31,7 +31,7 @@ void RowObserver::update() {
 	checkRows();
 }
 
-//	checkRow	--	Checks rows and stripes off candidates.
+//	checkRows	--	Checks rows and stripes off candidates.
 //	Parameters:	none.
 //	Returns:	void.
 void RowObserver::checkRows() {

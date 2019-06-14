@@ -9,6 +9,7 @@
 #include "ObserverBoard.h"
 #include "ObserverRow.h"
 #include "ObserverColumn.h"
+#include "ObserverBox.h"
 #include <iostream>
 
 int main() {
@@ -22,14 +23,15 @@ int main() {
 
 	BoardObserver *board = new BoardObserver(puzzle);
 	//RowObserver *rows = new RowObserver(puzzle);
-	ColumnObserver *columns = new ColumnObserver(puzzle);
+	//ColumnObserver *columns = new ColumnObserver(puzzle);
+	BoxObserver *boxes = new BoxObserver(puzzle);
 
 	//	Testing.
-	std::cout << "Row 7 column 7:" << std::endl;
-	puzzle->getCell(7, 7)->printCandidates();
+	std::cout << "Row 5 column 7:" << std::endl;
+	puzzle->getCell(5, 7)->printCandidates();
 	std::cout << std::endl;
-	std::cout << "Row 4 column 7:" << std::endl;
-	puzzle->getCell(4, 7)->printCandidates();
+	std::cout << "Row 9 column 7:" << std::endl;
+	puzzle->getCell(9, 7)->printCandidates();
 
 	return 0;
 }

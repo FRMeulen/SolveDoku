@@ -38,5 +38,4 @@ public:
 	//	Methods.
 	void update();
 	void checkRows();
-	void crossNumber(int, int);
 };

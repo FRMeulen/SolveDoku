@@ -3,6 +3,9 @@
 //	Revisions:
 //	2019-06-11	--	F.R. van der Meulen	--	Created.
 
+//	Pragma.
+#pragma once
+
 //	Include files.
 #include "ObserverSudoku.h"
 #include "SubjectSudoku.h"
@@ -19,6 +22,7 @@ public:
 	BoardObserver(SudokuSubject *);
 	virtual ~BoardObserver();
 
+	//	Methods.
 	void update();
 	void printBoard();
 	void printNumbersLine(int);

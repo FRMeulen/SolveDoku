@@ -10,6 +10,8 @@
 //	Constructor.
 BoardObserver::BoardObserver(SudokuSubject *sub) : SudokuObserver(sub) {
 	this->linkedSubject = sub;
+		
+	//	Initial update.
 	update();
 }
 
@@ -57,7 +59,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 2:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Second number line.
 		case 3:
@@ -66,7 +68,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 4:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Third number line.
 		case 5:
@@ -88,7 +90,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 9:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Fifth number line.
 		case 10:
@@ -97,7 +99,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 11:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Sixth number line.
 		case 12:
@@ -119,7 +121,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 16:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Eighth number line.
 		case 17:
@@ -128,7 +130,7 @@ void BoardObserver::printBoard() {
 		
 		//	Intersection line.
 		case 18:
-			std::cout << "├───┼───┼───│ │───┼───┼───│ │───┼───┼───┤" << std::endl;
+			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
 		
 		//	Ninth number line.
 		case 19:

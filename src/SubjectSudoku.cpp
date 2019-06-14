@@ -28,6 +28,19 @@ std::vector<Cell *> SudokuSubject::getState() {
 	return state;
 }
 
+//	getCell	--	Fetches cell in given position.
+//	Parameters:
+//		row	--	int.
+//		column	--	int.
+//	Returns:	Cell pointer.
+Cell* SudokuSubject::getCell(int row, int column) {
+	int rowIndex = row - 1;
+	int columnIndex = column - 1;
+	int pos = (rowIndex * 9) + columnIndex;
+	
+	return state[pos];
+}
+
 //	setState	--	Sets a number in a cell.
 //	Parameters:
 //		pos	--	int.

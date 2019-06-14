@@ -7,6 +7,7 @@
 #include "SubjectSudoku.h"
 #include "ObserverSudoku.h"
 #include "ObserverBoard.h"
+#include "ObserverRow.h"
 #include <iostream>
 
 int main() {
@@ -14,7 +15,15 @@ int main() {
 	
 	//	Create subjects & Observers.
 	SudokuSubject *puzzle = new SudokuSubject();
-	BoardObserver *obs = new BoardObserver(puzzle);
-	
+
+	//	Testing.
+	puzzle->getCell(4, 7)->setStoredNumber(8);
+
+	BoardObserver *board = new BoardObserver(puzzle);
+	RowObserver *rows = new RowObserver(puzzle);
+
+	//	Testing.
+	puzzle->getCell(4, 1)->printCandidates();
+
 	return 0;
 }

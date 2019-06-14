@@ -11,7 +11,7 @@
 
 //	Constructor.
 SudokuObserver::SudokuObserver(BaseSubject *subject) : BaseObserver(subject) {
-	//	Fill vector with NULL Cell pointers.
+	//	Fill vector with NULL pointers.
 	for (int i = 0; i < 81; i++) {
 		Cell *newCell = NULL;
 		copiedCells.push_back(newCell);

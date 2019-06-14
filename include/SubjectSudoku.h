@@ -27,6 +27,7 @@ public:
 
 	//	Methods.
 	std::vector<Cell *> getState();
+	Cell* getCell(int, int);
 	void setState(int, int);
 	void defaultState();
 	void start();

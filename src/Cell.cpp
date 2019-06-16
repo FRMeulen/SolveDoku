@@ -44,7 +44,7 @@ void Cell::strikeCandidate(int falseCandidate) {
 //	Returns:	void.
 void Cell::setNumberAndStrike(int newNumber) {
 	//	First set all numbers to false.
-	for (int i = 0; i < possibleNumbers; i++) {
+	for (unsigned int i = 0; i < possibleNumbers; i++) {
 		candidates[i] = false;
 	}
 	
@@ -68,6 +68,20 @@ int Cell::getStoredNumber() {
 //	Returns:	boolean pointer.
 bool* Cell::getCandidates() {
 	return candidates;
+}
+
+//	getCandidateCount	--	Returns number of possible candidates.
+//	Parameters:	none.
+//	Returns:	int.
+int Cell::getCandidateCount() {
+	int possibleCandidates = 0;
+	
+	for (unsigned int i = 0; i < sizeof(candidates); i++) {
+		if (candidates[i] == true)
+			possibleCandidates++;
+	}
+
+	return possibleCandidates;
 }
 
 //	setStoredNumber	--	Overwrites stored number.

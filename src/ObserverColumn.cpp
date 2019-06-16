@@ -46,9 +46,6 @@ void ColumnObserver::checkColumns() {
 			int numberInCell = copiedCells[columns[j][i]]->getStoredNumber();
 			if (numberInCell == 0)
 				continue;
-
-			//	Tracing.
-			std::cout << "Number " << numberInCell << " found in column " << j + 1 << " row " << i + 1 << "." << std::endl;
 			
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
@@ -61,4 +58,7 @@ void ColumnObserver::checkColumns() {
 			}
 		}
 	}
+
+	std::cout << "Done scanning columns." << std::endl;
+	std::cout << std::endl;
 }

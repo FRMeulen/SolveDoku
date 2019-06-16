@@ -63,5 +63,8 @@ void SudokuSubject::defaultState() {
 //	Parameters:	none.
 //	Returns:	void.
 void SudokuSubject::start() {
-	//	TODO
+	std::cout << "*****GAME STARTED*****" << std::endl;
+	std::cout << std::endl;
+
+	notifyAll();
 }

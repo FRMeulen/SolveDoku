@@ -46,9 +46,6 @@ void BoxObserver::checkBoxes() {
 			int numberInCell = copiedCells[boxes[j][i]]->getStoredNumber();
 			if (numberInCell == 0)
 				continue;
-			
-			//	Tracing.
-			std::cout << "Number " << numberInCell << " found in box " << j + 1 << " at index " << i + 1 << "." << std::endl;
 
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
@@ -61,4 +58,7 @@ void BoxObserver::checkBoxes() {
 			}
 		}
 	}
+	
+	std::cout << "Done scanning boxes." << std::endl;
+	std::cout << std::endl;
 }

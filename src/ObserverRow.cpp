@@ -47,9 +47,6 @@ void RowObserver::checkRows() {
 			if (numberInCell == 0)
 				continue;
 			
-			//	Tracing.
-			std::cout << "Number " << numberInCell << " found in row " << j + 1 << " column " << i + 1 << "." << std::endl;
-
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
 				//	Skip cell with the number.
@@ -61,4 +58,7 @@ void RowObserver::checkRows() {
 			}
 		}
 	}
+	
+	std::cout << "Done scanning rows." << std::endl;
+	std::cout << std::endl;
 }

@@ -31,6 +31,7 @@ public:
 	//	Getters.
 	int getStoredNumber();
 	bool* getCandidates();
+	int getCandidateCount();
 
 	//	Setters.
 	void setStoredNumber(int);

@@ -140,6 +140,8 @@ void BoardObserver::printBoard() {
 		//	Bottom line.
 		case 20:
 			std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
+
+		std::cout << std::endl;
 	}		
 }
 

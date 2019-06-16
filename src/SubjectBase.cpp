@@ -5,6 +5,7 @@
 
 //	Include files.
 #include "SubjectBase.h"
+#include <iostream>
 
 //	Constructor.
 BaseSubject::BaseSubject() {
@@ -20,6 +21,13 @@ BaseSubject::~BaseSubject() {
 //	Parameters:	none.
 //	Returns:	void.
 void BaseSubject::notifyAll() {
+	std::cout << std::endl;
+	std::cout << "--------------------" << std::endl;
+	std::cout << "--Iteration start!--" << std::endl;
+	std::cout << "--------------------" << std::endl;
+	std::cout << std::endl;
+
+
 	for (unsigned int i = 0; i < observers.size(); i++) {
 		observers[i]->update();
 	}

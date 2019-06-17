@@ -68,3 +68,12 @@ void SudokuSubject::start() {
 
 	notifyAll();
 }
+
+//	end	--	Ends game.
+//	Parameters:	none.
+//	Returns:	void.
+void SudokuSubject::end() {
+	gameAlive = false;
+	std::cout << "*****GAME ENDED*****" << std::endl;
+	std::cout << "Solved in " << solveIterations << " iterations." << std::endl;
+}

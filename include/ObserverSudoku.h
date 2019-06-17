@@ -28,7 +28,7 @@ public:
 
 	//	Methods.
 	void update(SudokuSubject*);
-	void copyState(std::vector<Cell*> );
+	void copyState(std::vector<Cell*>);
 };
 
 //	Late includes.

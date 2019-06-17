@@ -26,5 +26,4 @@ public:
 	void update();
 	void printBoard();
 	void printNumbersLine(int);
-	bool checkDone();
 };

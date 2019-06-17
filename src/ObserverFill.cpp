@@ -5,15 +5,11 @@
 
 //	Include files.
 #include "ObserverFill.h"
-#include <unistd.h>
 #include <iostream>
 
 //	Constructor.
-FillObserver::FillObserver(SudokuSubject *sub) : SudokuObserver(sub) {
+FillObserver::FillObserver(SudokuSubject *sub) : SudokuObserver(sub) {	
 	this->linkedSubject = sub;
-
-	//	Initial update.
-	update();
 }
 
 //	Destructor.
@@ -42,10 +38,13 @@ void FillObserver::checkCells() {
 
 	//	Check every cell.
 	for (int i = 0; i < 81; i++) {
-		//	Only fill cells that are not filled, and have one possible candidate.
-		if (copiedCells[i]->getStoredNumber() == 0 && copiedCells[i]->getCandidateCount() == 1) {
-			fillCell(i);
-			totalFilled++;
+		//	Only fill cells that are not filled.
+		if (copiedCells[i]->getStoredNumber() == 0) {
+			//	Only fill cells that have one candidate.
+			if (copiedCells[i]->getCandidateCount() == 1) {
+				totalFilled++;
+				fillCell(i);
+			}
 		}
 	}
 
@@ -53,13 +52,21 @@ void FillObserver::checkCells() {
 	std::cout << "Iteration finished. Filled " << totalFilled << " cells." << std::endl;
 	std::cout << std::endl;
 
-	usleep(1000);
-	
-	//	If new information present, notify observers.
-	if (totalFilled != 0)
+	//	Notify observers if new information is available.
+	if (totalFilled != 0) {
 		linkedSubject->notifyAll();
+		linkedSubject->solveIterations++;
+	}
 
-	else std::cout << "No new moves found! Dead end!" << std::endl;
+	else {
+		if (checkDone()) {
+			linkedSubject->end();
+		}
+
+		else {
+			std::cout << "No cells solvable! Dead-end!" << std::endl;
+		}
+	}
 }
 
 //	fillCell	--	Gets a cell's possible candidates, and fills it if possible.
@@ -68,12 +75,22 @@ void FillObserver::checkCells() {
 //	Returns:	void.
 void FillObserver::fillCell(int index) {
 	bool *possibilities = copiedCells[index]->getCandidates();
-	for (unsigned int i = 0; i < sizeof(possibilities); i++) {
+	for (unsigned int i = 0; i < sizeof(possibilities) + 1; i++) {
 		if (possibilities[i] == true) {
 			std::cout << "Filling cell at row " << (int) (index / 9) + 1 << " column " << (index % 9) + 1 << " with number " << i + 1 << "." << std::endl;
 			copiedCells[index]->setStoredNumber(i + 1);
 		}
 	}
+}
 
-	std::cout << std::endl;
+//	checkDone	--	Checks whether the game is done or not.
+//	Parameters:	none.
+//	Returns:	int.
+bool FillObserver::checkDone() {
+	for (int i = 0; i < 81; i++) {
+		if (copiedCells[i]->getStoredNumber() == 0) {
+			return false;
+		}
+	}
+	return true;
 }

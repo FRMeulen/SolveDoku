@@ -10,9 +10,6 @@
 //	Constructor.
 RowObserver::RowObserver(SudokuSubject *sub) : SudokuObserver(sub) {
 	this->linkedSubject = sub;
-
-	//	Initial update.
-	update();
 }
 
 //	Destructor.

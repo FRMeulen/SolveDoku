@@ -10,7 +10,7 @@
 #include <iostream>
 
 //	Constructor.
-SudokuObserver::SudokuObserver(BaseSubject *subject) : BaseObserver(subject) {
+SudokuObserver::SudokuObserver(BaseSubject *subject) : BaseObserver(subject) {	
 	//	Fill vector with NULL pointers.
 	for (int i = 0; i < 81; i++) {
 		Cell *newCell = NULL;

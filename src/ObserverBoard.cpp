@@ -11,7 +11,7 @@
 BoardObserver::BoardObserver(SudokuSubject *sub) : SudokuObserver(sub) {
 	this->linkedSubject = sub;
 		
-	//	Initial update.
+	//	Initial update to print board.
 	update();
 }
 
@@ -29,13 +29,6 @@ void BoardObserver::update() {
 
 	//	Print board.
 	printBoard();
-
-	//	Check if game is done.
-	if (checkDone() == 1) {
-		std::cout << "Sudoku solved!" << std::endl;
-
-		linkedSubject->gameAlive = false;
-	}
 }
 
 //	printBoard	--	Prints the board to the screen.
@@ -173,17 +166,4 @@ void BoardObserver::printNumbersLine(int startNumber) {
 			std::cout << "│" << std::endl;
 		}
 	}
-}
-
-//	checkDone	--	Checks if the game is done.
-//	Parameters:	none.
-//	Returns:	bool.
-bool BoardObserver::checkDone() {
-	for (unsigned int i = 0; i < copiedCells.size(); i++) {
-		if (copiedCells[i]->getStoredNumber() == 0) {
-			return false;
-		}
-	}
-	
-	return true;	
 }

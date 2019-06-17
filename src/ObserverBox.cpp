@@ -10,9 +10,6 @@
 //	Constructor.
 BoxObserver::BoxObserver(SudokuSubject *sub) : SudokuObserver(sub) {
 	this->linkedSubject = sub;
-
-	//	Initial update.
-	update();
 }
 
 //	Destructor.
@@ -44,14 +41,16 @@ void BoxObserver::checkBoxes() {
 		for (int j = 0; j < 9; j++) {
 			//	Skip cells set to 0.
 			int numberInCell = copiedCells[boxes[j][i]]->getStoredNumber();
-			if (numberInCell == 0)
+			if (numberInCell == 0) {
 				continue;
+			}
 
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
 				//	Skip cell with the number.
-				if (k == i)
+				if (k == i) {
 					continue;
+				}
 
 				//	Strike off candidate.
 				copiedCells[boxes[j][k]]->strikeCandidate(numberInCell);

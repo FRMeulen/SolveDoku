@@ -26,4 +26,5 @@ public:
 	void update();
 	void checkCells();
 	void fillCell(int);
+	bool checkDone();
 };

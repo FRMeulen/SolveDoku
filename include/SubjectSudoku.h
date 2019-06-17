@@ -24,6 +24,7 @@ public:
 	//	Fields.
 	std::vector<Cell *> state;
 	bool gameAlive = true;
+	int solveIterations = 0;
 
 	//	Methods.
 	std::vector<Cell *> getState();
@@ -31,4 +32,5 @@ public:
 	void setState(int, int);
 	void defaultState();
 	void start();
+	void end();
 };

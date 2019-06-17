@@ -63,7 +63,7 @@ void FillObserver::checkCells() {
 		}
 
 		else {
-			std::cout << "No cells solvable! Dead-end!" << std::endl;
+			std::cout << "No cells solvable! Additional rule-observers needed!" << std::endl;
 		}
 	}
 }

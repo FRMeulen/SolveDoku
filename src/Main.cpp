@@ -20,37 +20,18 @@ int main() {
 	SudokuSubject *puzzle = new SudokuSubject();
 
 	//	Pre-fill sudoku.
-	puzzle->getCell(1, 1)->setNumberAndStrike(8);
-	puzzle->getCell(1, 2)->setNumberAndStrike(7);
-	puzzle->getCell(1, 3)->setNumberAndStrike(6);
-	puzzle->getCell(1, 4)->setNumberAndStrike(9);
-	puzzle->getCell(2, 2)->setNumberAndStrike(1);
-	puzzle->getCell(2, 6)->setNumberAndStrike(6);
-	puzzle->getCell(3, 2)->setNumberAndStrike(4);
-	puzzle->getCell(3, 4)->setNumberAndStrike(3);
-	puzzle->getCell(3, 6)->setNumberAndStrike(5);
-	puzzle->getCell(3, 7)->setNumberAndStrike(8);
-	puzzle->getCell(4, 1)->setNumberAndStrike(4);
-	puzzle->getCell(4, 7)->setNumberAndStrike(2);
-	puzzle->getCell(4, 8)->setNumberAndStrike(1);
-	puzzle->getCell(5, 2)->setNumberAndStrike(9);
-	puzzle->getCell(5, 4)->setNumberAndStrike(5);
-	puzzle->getCell(6, 2)->setNumberAndStrike(5);
-	puzzle->getCell(6, 5)->setNumberAndStrike(4);
-	puzzle->getCell(6, 7)->setNumberAndStrike(3);
-	puzzle->getCell(6, 9)->setNumberAndStrike(6);
-	puzzle->getCell(7, 2)->setNumberAndStrike(2);
-	puzzle->getCell(7, 3)->setNumberAndStrike(9);
-	puzzle->getCell(7, 9)->setNumberAndStrike(8);
-	puzzle->getCell(8, 3)->setNumberAndStrike(4);
-	puzzle->getCell(8, 4)->setNumberAndStrike(6);
-	puzzle->getCell(8, 5)->setNumberAndStrike(9);
-	puzzle->getCell(8, 7)->setNumberAndStrike(1);
-	puzzle->getCell(8, 8)->setNumberAndStrike(7);
-	puzzle->getCell(8, 9)->setNumberAndStrike(3);
-	puzzle->getCell(9, 6)->setNumberAndStrike(1);
-	puzzle->getCell(9, 9)->setNumberAndStrike(4);
-	
+	int startState[81] = {
+		6,	0,	0,	0,	2,	0,	8,	0,	3,
+		0,	3,	0,	0,	9,	4,	0,	0,	0,
+		0,	0,	0,	0,	0,	0,	0,	9,	0,
+		0,	0,	0,	0,	0,	0,	0,	0,	5,
+		0,	0,	8,	0,	0,	0,	0,	6,	9,
+		7,	5,	0,	0,	0,	0,	2,	4,	0,
+		0,	0,	2,	0,	3,	0,	0,	0,	1,
+		0,	0,	4,	6,	5,	0,	0,	8,	0,
+		1,	8,	5,	2,	4,	0,	0,	3,	6
+	};
+	puzzle->setByArray(startState);
 
 	//	Create observers.
 	BoardObserver *board = new BoardObserver(puzzle);

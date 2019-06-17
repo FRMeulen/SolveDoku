@@ -5,6 +5,7 @@
 
 //	Include files.
 #include "SubjectSudoku.h"
+#include <iostream>
 
 //	Constructor.
 SudokuSubject::SudokuSubject() {
@@ -47,6 +48,17 @@ Cell* SudokuSubject::getCell(int row, int column) {
 void SudokuSubject::defaultState() {
 	for (unsigned int i = 0; i < state.size(); i++) {
 		state[i]->setStoredNumber(0);
+	}
+}
+
+//	setByArray	--	Sets state by 81-length int array.
+//	Parameters:
+//		newState	--	Int array.
+//	Returns:	void.
+void SudokuSubject::setByArray(int *newState) {
+	for (int i = 0; i < 81; i++) {
+		if (newState[i] != 0)
+			state[i]->setNumberAndStrike(newState[i]);
 	}
 }
 

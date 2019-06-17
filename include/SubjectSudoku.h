@@ -26,11 +26,15 @@ public:
 	bool gameAlive = true;
 	int solveIterations = 0;
 
-	//	Methods.
+	//	Getters.
 	std::vector<Cell *> getState();
 	Cell* getCell(int, int);
-	void setState(int, int);
+	
+	//	Setters.
 	void defaultState();
+	void setByArray(int*);
+	
+	//	Game methods.
 	void start();
 	void iterate();
 	void end();

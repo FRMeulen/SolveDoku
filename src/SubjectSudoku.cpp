@@ -41,15 +41,6 @@ Cell* SudokuSubject::getCell(int row, int column) {
 	return state[pos];
 }
 
-//	setState	--	Sets a number in a cell.
-//	Parameters:
-//		pos	--	int.
-//		number	--	int.
-//	Returns:	void.
-void SudokuSubject::setState(int pos, int number) {
-	state[pos]->setStoredNumber(number);
-}
-
 //	defaultState	--	Sets cells to default state.
 //	Parameters:	none.
 //	Returns:	void.

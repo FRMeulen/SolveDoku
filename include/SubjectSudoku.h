@@ -32,5 +32,6 @@ public:
 	void setState(int, int);
 	void defaultState();
 	void start();
+	void iterate();
 	void end();
 };

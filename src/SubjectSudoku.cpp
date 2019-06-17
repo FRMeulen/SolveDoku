@@ -69,6 +69,14 @@ void SudokuSubject::start() {
 	notifyAll();
 }
 
+//	iterate	--	Starts next iteration.
+//	Parameters:	none.
+//	Returns:	void.
+void SudokuSubject::iterate() {
+	solveIterations++;
+	notifyAll();
+}
+
 //	end	--	Ends game.
 //	Parameters:	none.
 //	Returns:	void.

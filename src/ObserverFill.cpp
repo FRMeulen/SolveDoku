@@ -54,8 +54,7 @@ void FillObserver::checkCells() {
 
 	//	Notify observers if new information is available.
 	if (totalFilled != 0) {
-		linkedSubject->notifyAll();
-		linkedSubject->solveIterations++;
+		linkedSubject->iterate();
 	}
 
 	else {

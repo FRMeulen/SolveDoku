@@ -23,6 +23,7 @@ Observers:
 
 Misc:
 	- Cell
+	- SudokuParser
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell class:
@@ -48,3 +49,7 @@ FillObserver:
 	- Checks every cell.
 	- Fills cells with only one possible candidate.
 	- Notifies observers.
+
+SudokuParser:
+	- Parses text file with sudoku template.
+	- Sets the subject with parsed grid.

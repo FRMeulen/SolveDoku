@@ -11,6 +11,8 @@
 #include "ObserverColumn.h"
 #include "ObserverBox.h"
 #include "ObserverFill.h"
+#include "SudokuParser.h"
+#include <string>
 #include <iostream>
 
 int main() {
@@ -18,20 +20,10 @@ int main() {
 	
 	//	Create subjects & Observers.
 	SudokuSubject *puzzle = new SudokuSubject();
+	SudokuParser *parser = new SudokuParser(puzzle);
 
 	//	Pre-fill sudoku.
-	int startState[81] = {
-		6,	0,	0,	0,	2,	0,	8,	0,	3,
-		0,	3,	0,	0,	9,	4,	0,	0,	0,
-		0,	0,	0,	0,	0,	0,	0,	9,	0,
-		0,	0,	0,	0,	0,	0,	0,	0,	5,
-		0,	0,	8,	0,	0,	0,	0,	6,	9,
-		7,	5,	0,	0,	0,	0,	2,	4,	0,
-		0,	0,	2,	0,	3,	0,	0,	0,	1,
-		0,	0,	4,	6,	5,	0,	0,	8,	0,
-		1,	8,	5,	2,	4,	0,	0,	3,	6
-	};
-	puzzle->setByArray(startState);
+	parser->parseSudoku("res/expert.txt");
 
 	//	Create observers.
 	BoardObserver *board = new BoardObserver(puzzle);

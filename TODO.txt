@@ -1,5 +1,4 @@
 Future features (possibly):
-	-	Sudoku parsing for easy input.
 	-	More advanced observers to check more complicated rules.
 	-	Step-by-step solving via commandos.
 	-	In case of boredom: GUI?

@@ -102,7 +102,24 @@ void SudokuParser::parseSudoku(std::string path) {
 //	Parameters:	none.
 //	Returns:	void.
 void SudokuParser::formSudoku() {
-	//	Read sudoku template.
+	//	Clear screen.
+	system("clear");
+
+	//	Get user sudoku.
+	std::string strUserSudoku = getUserSudoku();
+
+	std::cout << "Testing formSudoku..." << std::endl;
+	std::cout << strUserSudoku << std::endl;
+	
+	//	Debug pause.
+	std::string wait;
+	std::cin >> wait;
+}
+
+//	readTemplate	--	Reads sudoku template.
+//	Parameters:	none.
+//	Returns:	string.
+std::string SudokuParser::readTemplate() {
 	std::string sudokuTemplate;
 	std::string lineContent;
 	std::ifstream input;
@@ -115,7 +132,15 @@ void SudokuParser::formSudoku() {
 	}
 	input.close();
 
-	std::string userSudoku = sudokuTemplate;
+	return sudokuTemplate;
+}
+
+//	getUserSudoku	--	Gets user input to fill sudoku.
+//	Parameters:	none.
+//	Returns:	string.
+std::string SudokuParser::getUserSudoku() {
+	//	Read sudoku template.
+	std::string wipUserSudoku = readTemplate();
 
 	//	Hardcoded indexes of the numbers in the template.	
 	int numberIndexes[81] = {
@@ -130,27 +155,21 @@ void SudokuParser::formSudoku() {
 		1852,	1858,	1864,	1874,	1880,	1886,	1896,	1902,	1908
 	};
 
-	//	Debugging pause.
-	std::string userInput;
-	char inputDigitChar;
-
 	//	Ask user to fill cells.
 	while (true) {
+		//	Clear input stream.
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 		//	Utility fields.
-		int row;
-		int column;
-		int userNumber;
+		int row, column, userNumber;
 
 		//	Print board as-is.
 		std::string yesOrNo;
-		std::cout << userSudoku << std::endl;
+		std::cout << wipUserSudoku << std::endl;
 		std::cout << "Do you wish to enter a number?" << std::endl;
 		std::cout << "y/n: ";
 		std::cin >> yesOrNo;
-
-		//	Clear input buffer.
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		//	Process input.
 		if (yesOrNo.compare("y") == 0 || yesOrNo.compare("Y") == 0) {
@@ -159,7 +178,9 @@ void SudokuParser::formSudoku() {
 
 			//	Determine row.
 			std::cout << "Please enter the row of your number: ";
-			if (!std::cin >> row && row >= 1 && row <= 9) {
+			std::cin >> row;
+			if (std::cin.fail()) {
+				system("clear");
 				std::cout << "Not a valid number, ignored..." << std::endl;
 				continue;
 			}
@@ -171,12 +192,19 @@ void SudokuParser::formSudoku() {
 		
 			//	Determine column.
 			std::cout << "Please enter the column of your number: ";
-			if (!std::cin >> column && column >= 1 && column <= 9) {
+			std::cin >> column;
+			if (std::cin.fail()) {
 				std::cout << "Not a valid number, ignored..." << std::endl;
 				continue;
 			}
-			int indexesPos = (9 * row) + column;
 			std::cout << std::endl;
+
+			//	Correct row & column to 0-based counting.
+			row--;
+			column--;
+
+			//	Determine position in indexes array.
+			int indexesPos = (9 * row) + column;
 
 			//	Clear input buffer.
 			std::cin.clear();
@@ -185,17 +213,22 @@ void SudokuParser::formSudoku() {
 			//	Determine number.
 			std::cout << "Which number should go there? 0 means empty." << std::endl;
 			std::cout << "Number: ";
-			if (!std::cin >> userNumber && userNumber >= 0 && userNumber <= 9) {
+			std::cin >> userNumber;
+			if (std::cin.fail()) {
 				std::cout << "Not a valid number, ignored..." << std::endl;
 				continue;
 			}
 
-			//	Clear input buffer.
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			if (userNumber < 0 || userNumber > 9) {
+				std::cout << "Not a valid number, ignored..." << std::endl;
+				continue;
+			}
 
 			//	Fill number in sudoku.
-			userSudoku[numberIndexes[indexesPos]] = userNumber;
+			wipUserSudoku[numberIndexes[indexesPos]] = std::to_string(userNumber)[0];
+			
+			//	Clear screen.
+			system("clear");
 		}
 
 		else if (yesOrNo.compare("n") == 0 || yesOrNo.compare("N") == 0) {
@@ -207,10 +240,5 @@ void SudokuParser::formSudoku() {
 		}
 	}
 
-	std::cout << "Testing formSudoku..." << std::endl;
-	std::cout << userSudoku << std::endl;
-	
-	//	Debug pause.
-	std::string wait;
-	std::cin >> wait;
+	return wipUserSudoku;
 }

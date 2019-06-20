@@ -15,15 +15,11 @@
 #include <string>
 #include <iostream>
 
-int main() {
-	std::cout << "Main started!" << std::endl;
-	
-	//	Create subject.
-	SudokuSubject *puzzle = new SudokuSubject();
-	
-	//	Create parser.
-	SudokuParser *parser = new SudokuParser(puzzle);
-	
+//	getDifficulty	--	Asks user for difficulty.
+//	Parameters:
+//		parser	--	SudokuParser pointer.
+//	Returns:	void.
+void getDifficulty(SudokuParser *parser) {
 	//	Request difficulty.
 	std::string difficulty;
 	while (true) {
@@ -66,7 +62,21 @@ int main() {
 		else {
 			std::cout << "Difficulty does not exist! Please try again!" << std::endl;
 		}
-	}
+	}	
+}
+
+//	main	--	Entry point for SolveDoku.
+//	Parameters:	none.
+//	Returns:	int.
+int main() {	
+	//	Create subject.
+	SudokuSubject *puzzle = new SudokuSubject();
+	
+	//	Create parser.
+	SudokuParser *parser = new SudokuParser(puzzle);
+	
+	//	Get difficulty.
+	getDifficulty(parser);
 
 	//	Create rule observers.
 	BoardObserver *board = new BoardObserver(puzzle);

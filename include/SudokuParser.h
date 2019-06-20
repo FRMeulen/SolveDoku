@@ -26,4 +26,5 @@ public:
 
 	//	Methods.
 	void parseSudoku(std::string);
+	void formSudoku();
 };

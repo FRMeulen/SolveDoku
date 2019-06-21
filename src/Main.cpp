@@ -24,11 +24,17 @@ void getDifficulty(SudokuParser *parser) {
 	std::string difficulty;
 	while (true) {
 		std::cout << "Please enter the requested difficulty." << std::endl;
-		std::cout << "Options include: easy, medium, hard, expert, custom" << std::endl;
+		std::cout << "Options include: empty, easy, medium, hard, expert, custom" << std::endl;
 		std::cout << "Difficulty: ";
 		std::cin >> difficulty;
-
-		if (difficulty.compare("easy") == 0 || difficulty.compare("Easy") == 0) {
+		
+		if (difficulty.compare("empty") == 0 || difficulty.compare("Empty") == 0) {
+			std::cout << "Loading empty sudoku..." << std::endl;
+			parser->parseSudoku("res/template.txt");
+			break;
+		}
+		
+		else if (difficulty.compare("easy") == 0 || difficulty.compare("Easy") == 0) {
 			std::cout << "Loading easy-level sudoku..." << std::endl;
 			parser->parseSudoku("res/easy.txt");
 			break;
@@ -89,5 +95,6 @@ int main() {
 
 	//	Start solving.
 	puzzle->start();
+
 	return 0;
 }

@@ -1,4 +1,5 @@
 Future features (possibly):
+	-	Automatic reading of existing sudokus.
 	-	More advanced observers to check more complicated rules.
 	-	Step-by-step solving via commandos.
 	-	In case of boredom: GUI?

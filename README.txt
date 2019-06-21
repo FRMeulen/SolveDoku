@@ -53,3 +53,4 @@ FillObserver:
 SudokuParser:
 	- Parses text file with sudoku template.
 	- Sets the subject with parsed grid.
+	- Can form sudokus with user input.

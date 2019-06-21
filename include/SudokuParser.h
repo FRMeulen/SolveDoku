@@ -29,4 +29,5 @@ public:
 	void formSudoku();
 	std::string readTemplate();
 	std::string getUserSudoku();
+	std::string writeToFile(std::string);
 };

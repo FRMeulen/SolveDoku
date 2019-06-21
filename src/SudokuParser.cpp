@@ -107,13 +107,8 @@ void SudokuParser::formSudoku() {
 
 	//	Get user sudoku.
 	std::string strUserSudoku = getUserSudoku();
-
-	std::cout << "Testing formSudoku..." << std::endl;
-	std::cout << strUserSudoku << std::endl;
-	
-	//	Debug pause.
-	std::string wait;
-	std::cin >> wait;
+	std::string userSudokuFilePath = writeToFile(strUserSudoku);
+	parseSudoku(userSudokuFilePath);
 }
 
 //	readTemplate	--	Reads sudoku template.
@@ -241,4 +236,39 @@ std::string SudokuParser::getUserSudoku() {
 	}
 
 	return wipUserSudoku;
+}
+
+//	writeToFile	--	Writes string to file.
+//	Parameters:
+//		text	--	String.
+//	Returns:	string.
+std::string SudokuParser::writeToFile(std::string text) {
+	//	Ask for name.
+	std::string fileName;
+	while (true) {
+		std::cout << "What should your sudoku be called?" << std::endl;
+		std::cout << "Filename: ";
+		std::cin >> fileName;
+
+		if (std::cin.fail()) {
+			std::cout << "Invalid name! Please try again!" << std::endl;
+			continue;
+		}
+
+		break;
+	}
+
+	//	Output file.
+	std::string filePath = "res/" + fileName;
+	std::ofstream output;
+	output.open(filePath);
+	if (output.is_open()) {
+		output << text;
+	}
+
+	else {
+		std::cout << "Error opening file!" << std::endl;
+	}
+
+	return filePath;
 }

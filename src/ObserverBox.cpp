@@ -24,40 +24,38 @@ void BoxObserver::update() {
 	//	Update observer.
 	super::update(linkedSubject);
 
+	std::cout << "***Box Observer Start***" << std::endl;
+	
 	//	Check all rows.
 	checkBoxes();
+
+	std::cout << "***Box Observer End***" << std::endl << std::endl;
 }
 
 //	checkBoxes	--	Checks boxes and stripes off candidates.
 //	Parameters:	none.
 //	Returns:	void.
 void BoxObserver::checkBoxes() {
-	//	Tracing.
-	std::cout << "***Box Observer***" << std::endl;
-	
 	//	Check  every Box.
 	for (int i = 0; i < 9; i++) {
 		//	Check every cell.
 		for (int j = 0; j < 9; j++) {
 			//	Skip cells set to 0.
-			int numberInCell = copiedCells[boxes[j][i]]->getStoredNumber();
-			if (numberInCell == 0) {
+			int numberInCell = copiedCells[boxes[i][j]]->getStoredNumber();
+			if (numberInCell == 0)
 				continue;
-			}
-
+			
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
 				//	Skip cell with the number.
-				if (k == i) {
+				if (k == j)
 					continue;
-				}
 
 				//	Strike off candidate.
-				copiedCells[boxes[j][k]]->strikeCandidate(numberInCell);
+				copiedCells[boxes[i][k]]->strikeCandidate(numberInCell);
 			}
 		}
 	}
-	
-	std::cout << "Done scanning boxes." << std::endl;
-	std::cout << std::endl;
+
+	std::cout << "--Done scanning rows.--" << std::endl;
 }

@@ -77,7 +77,7 @@ void FillObserver::fillCell(int index) {
 	for (unsigned int i = 0; i < sizeof(possibilities) + 1; i++) {
 		if (possibilities[i] == true) {
 			std::cout << "Filling cell at row " << (int) (index / 9) + 1 << " column " << (index % 9) + 1 << " with number " << i + 1 << "." << std::endl;
-			copiedCells[index]->setStoredNumber(i + 1);
+			copiedCells[index]->setNumberAndStrike(i + 1);
 		}
 	}
 }

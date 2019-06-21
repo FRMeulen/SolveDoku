@@ -24,38 +24,38 @@ void ColumnObserver::update() {
 	//	Update observer.
 	super::update(linkedSubject);
 
+	std::cout << "***Column Observer Start***" << std::endl;
+
 	//	Check all columns.
 	checkColumns();
+	
+	std::cout << "***Column Observer End***" << std::endl << std::endl;
 }
 
 //	checkColumns	--	Checks columns and stripes off candidates.
 //	Parameters:	none.
 //	Returns:	void.
 void ColumnObserver::checkColumns() {
-	//	Tracing.
-	std::cout << "***Column Observer***" << std::endl;
-
 	//	Check every column.
 	for (int i = 0; i < 9; i++) {
 		//	Check every cell.
 		for (int j = 0; j < 9; j++) {
 			//	Skip cells set to 0.
-			int numberInCell = copiedCells[columns[j][i]]->getStoredNumber();
+			int numberInCell = copiedCells[columns[i][j]]->getStoredNumber();
 			if (numberInCell == 0)
 				continue;
 			
 			//	Strike off found number in all cells.
 			for (int k = 0; k < 9; k++) {
 				//	Skip cell with the number.
-				if (k == i)
+				if (k == j)
 					continue;
 
 				//	Strike off candidate.
-				copiedCells[columns[j][k]]->strikeCandidate(numberInCell);
+				copiedCells[columns[i][k]]->strikeCandidate(numberInCell);
 			}
 		}
 	}
 
-	std::cout << "Done scanning columns." << std::endl;
-	std::cout << std::endl;
+	std::cout << "--Done scanning columns.--" << std::endl;
 }

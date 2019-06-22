@@ -36,6 +36,19 @@ void RowObserver::update() {
 //	Parameters:	none.
 //	Returns:	void.
 void RowObserver::checkRows() {
+	//	Strike off existing numbers as candidates.
+	strikeNumbers();
+
+	//	Check for singles.
+	checkSingles();
+
+	std::cout << "--Done scanning rows.--" << std::endl;
+}
+
+//	strikeNumbers	--	Checks columns and strikes off found numbers.
+//	Parameters:	none.
+//	Returns:	void.
+void RowObserver::strikeNumbers() {
 	//	Check  every row.
 	for (int i = 0; i < 9; i++) {
 		//	Check every cell.
@@ -56,6 +69,35 @@ void RowObserver::checkRows() {
 			}
 		}
 	}
+}
 
-	std::cout << "--Done scanning rows.--" << std::endl;
+//	checkSingles	--	Check if a number can appear in only one cell.
+//	Parameters:	none.
+//	Returns:	void.
+void RowObserver::checkSingles() {
+	int occurances;
+
+	//	Check every row.
+	for (int i = 0; i < 9; i++) {
+		occurances = 0;
+		//Check every possible number.
+		for (int j = 0; j < 9; j++) {
+			//	Check every cell.
+			for (int k = 0; k < 9; k++) {
+				if(copiedCells[rows[i][k]]->canBe(j)) {
+					occurances++;
+				}
+			}
+
+			//	If only one cell can host j.
+			if (occurances == 1) {
+				//	Find and fill cell.
+				for (int k = 0; k < 9; k++) {
+					if (copiedCells[rows[i][k]]->canBe(j)) {
+						copiedCells[rows[i][k]]->strikeAllExcept(j);
+					}
+				}
+			}
+		}
+	}
 }

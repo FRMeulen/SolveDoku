@@ -38,4 +38,6 @@ public:
 	//	Methods.
 	void update();
 	void checkRows();
+	void strikeNumbers();
+	void checkSingles();
 };

@@ -26,7 +26,9 @@ public:
 	//	Methods.
 	void printCandidates();
 	void strikeCandidate(int);
+	void strikeAllExcept(int);
 	void setNumberAndStrike(int);
+	bool canBe(int);
 
 	//	Getters.
 	int getStoredNumber();

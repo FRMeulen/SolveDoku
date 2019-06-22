@@ -38,6 +38,18 @@ void Cell::strikeCandidate(int falseCandidate) {
 	candidates[falseCandidate - 1] = false;
 }
 
+//	strikeAllExcept	--	Strikes all numbers as cell candidates except for one.
+//	Parameters:
+//		trueCandidate	--	int.
+//	Returns:	void.
+void Cell::strikeAllExcept(int trueCandidate) {
+	for (int i = 0; i < 9; i++) {
+		if (i != (trueCandidate - 1)) {
+			candidates[i] = false;
+		}
+	}
+}
+
 //	setNumberAndStrike	--	Sets cell number and strikes all other candidates.
 //	Parameters:
 //		newNumber	--	int.
@@ -54,6 +66,21 @@ void Cell::setNumberAndStrike(int newNumber) {
 	//	Set new number.
 	setStoredNumber(newNumber);
 
+}
+
+//	canBe	--	Checks if the cell can be a certain number.
+//	Parameters:
+//		number	--	int.
+//	Returns:	bool.
+bool Cell::canBe(int number) {
+	int index = number - 1;
+	if (candidates[index]) {
+		return true;
+	}
+
+	else {
+		return false;
+	}
 }
 
 //	getStoredNumber	--	Returns stored number..

@@ -66,6 +66,7 @@ void SudokuSubject::setByArray(int *newState) {
 //	Parameters:	none.
 //	Returns:	void.
 void SudokuSubject::start() {
+	system("clear");
 	std::cout << "*****GAME STARTED*****" << std::endl;
 	std::cout << std::endl;
 

@@ -6,6 +6,7 @@
 //	Include files.
 #include "ObserverFill.h"
 #include <iostream>
+#include <limits>
 
 //	Constructor.
 FillObserver::FillObserver(SudokuSubject *sub) : SudokuObserver(sub) {	
@@ -54,6 +55,19 @@ void FillObserver::checkCells() {
 
 	//	Notify observers if new information is available.
 	if (totalFilled != 0) {
+		//	Wait for user input.
+		std::string nextIteration;
+		std::cout << "Press any button + enter to continue..." << std::endl;
+		std::cin >> nextIteration;
+
+		//	Clear buffer.
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		//	Clear screen.
+		system("clear");
+
+		//	Start next iteration.
 		linkedSubject->iterate();
 	}
 

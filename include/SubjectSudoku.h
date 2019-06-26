@@ -25,6 +25,7 @@ public:
 	std::vector<Cell *> state;
 	bool gameAlive = true;
 	int solveIterations = 0;
+	int solvedCells = 0;
 
 	//	Getters.
 	std::vector<Cell *> getState();
@@ -36,6 +37,7 @@ public:
 	
 	//	Game methods.
 	void start();
+	void increaseSolvedCellCount(int);
 	void iterate();
 	void end();
 };

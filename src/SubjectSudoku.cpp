@@ -73,6 +73,14 @@ void SudokuSubject::start() {
 	notifyAll();
 }
 
+//	increaseSolvedCellCount	--	Increases solvedCells counter;
+//	Parameters:
+//		count	--	New solved cell count.
+//	Returns:	void.
+void SudokuSubject::increaseSolvedCellCount(int count) {
+	solvedCells += count;
+}
+
 //	iterate	--	Starts next iteration.
 //	Parameters:	none.
 //	Returns:	void.
@@ -88,4 +96,5 @@ void SudokuSubject::end() {
 	gameAlive = false;
 	std::cout << "*****GAME ENDED*****" << std::endl;
 	std::cout << "Solved in " << solveIterations << " iterations." << std::endl;
+	std::cout << "In total, " << solvedCells << " cells were solved." << std::endl;
 }

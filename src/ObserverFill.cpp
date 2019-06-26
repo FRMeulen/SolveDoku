@@ -67,7 +67,8 @@ void FillObserver::checkCells() {
 		//	Clear screen.
 		system("clear");
 
-		//	Start next iteration.
+		//	Count solved cells and start next iteration.
+		linkedSubject->increaseSolvedCellCount(totalFilled);
 		linkedSubject->iterate();
 	}
 

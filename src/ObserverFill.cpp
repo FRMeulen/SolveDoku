@@ -74,11 +74,11 @@ void FillObserver::checkCells() {
 
 	else {
 		if (checkDone()) {
-			linkedSubject->end();
+			linkedSubject->end(true);
 		}
 
 		else {
-			std::cout << "No cells solvable! Additional rule-observers needed!" << std::endl;
+			linkedSubject->end(false);
 		}
 	}
 }

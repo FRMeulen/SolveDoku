@@ -90,11 +90,19 @@ void SudokuSubject::iterate() {
 }
 
 //	end	--	Ends game.
-//	Parameters:	none.
+//	Parameters:
+//		success	--	bool.
 //	Returns:	void.
-void SudokuSubject::end() {
+void SudokuSubject::end(bool success) {
 	gameAlive = false;
 	std::cout << "*****GAME ENDED*****" << std::endl;
-	std::cout << "Solved in " << solveIterations << " iterations." << std::endl;
+	if (success) {
+		std::cout << "Solved in " << solveIterations << " iterations." << std::endl;
+	}
+
+	else {
+		std::cout << "No more solvable cells after " << solveIterations << " iterations." << std::endl;
+	}
+
 	std::cout << "In total, " << solvedCells << " cells were solved." << std::endl;
 }

@@ -39,5 +39,5 @@ public:
 	void start();
 	void increaseSolvedCellCount(int);
 	void iterate();
-	void end();
+	void end(bool);
 };

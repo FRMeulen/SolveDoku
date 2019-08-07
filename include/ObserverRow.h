@@ -40,4 +40,5 @@ public:
 	void checkRows();
 	void strikeNumbers();
 	void checkSingles();
+	void checkPairs();
 };

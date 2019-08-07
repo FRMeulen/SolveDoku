@@ -42,6 +42,9 @@ void RowObserver::checkRows() {
 	//	Check for singles.
 	checkSingles();
 
+	//	Check for pairs.
+	checkPairs();
+
 	std::cout << "--Done scanning rows.--" << std::endl;
 }
 
@@ -81,7 +84,7 @@ void RowObserver::checkSingles() {
 	for (int i = 0; i < 9; i++) {
 		occurances = 0;
 		//Check every possible number.
-		for (int j = 0; j < 9; j++) {
+		for (int j = 1; j < 10; j++) {
 			//	Check every cell.
 			for (int k = 0; k < 9; k++) {
 				if(copiedCells[rows[i][k]]->canBe(j)) {
@@ -97,6 +100,44 @@ void RowObserver::checkSingles() {
 						copiedCells[rows[i][k]]->strikeAllExcept(j);
 					}
 				}
+			}
+		}
+	}
+}
+
+//	checkPairs	--	Check if two numbers pair up in two cells.
+//	Parameters:	none.
+//	Returns:	void.
+void RowObserver::checkPairs() {
+	int occurances;
+	bool pairEligibles[9] = {
+		false,	//	1.
+		false,	//	2.
+		false,	//	3.
+		false,	//	4.
+		false,	//	5.
+		false,	//	6.
+		false,	//	7.
+		false,	//	8.
+		false	//	9.
+	};
+
+	//	Check every row.
+	for (int i = 0; i < 9; i++) {
+		occurances = 0;
+		//	Check every possible number.
+		for (int j = 1; j < 10; j++) {
+			//	Check every cell.
+			for (int k = 0; k < 9; k++) {
+				if (copiedCells[rows[i][k]]->canBe(j)) {
+					occurances++;
+				}
+			}
+
+			//	If j can appear in two cells.
+			if (occurances == 2) {
+				//	Note number as pair-eligible.
+				pairEligibles[j - 1] = true;
 			}
 		}
 	}

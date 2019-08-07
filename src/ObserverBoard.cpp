@@ -37,105 +37,37 @@ void BoardObserver::update() {
 void BoardObserver::printBoard() {
 	std::cout << "***Board Observer***" << std::endl;
 	
-	int cellNumber = 0;
-	int lineIterator = 0;
+	//	Prints out the board to the screen.
+	//	Lines containing the numbers are printed using the printNumbersLine method.
+	//	Starting index for printNumbersLine increases with 9 after each call.
 
-	switch (lineIterator) {
-		//	Top row.
-		case 0: 
-			std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
-		
-		//	First number line.
-		case 1: 
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 2:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Second number line.
-		case 3:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 4:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Third number line.
-		case 5:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Bottom line.
-		case 6:
-			std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
-		
-		//	Top row.
-		case 7:
-			std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
-		
-		//	Fourth number line.
-		case 8:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 9:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Fifth number line.
-		case 10:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 11:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Sixth number line.
-		case 12:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Bottom line.
-		case 13:
-			std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
-		
-		//	Top row.
-		case 14:
-			std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
-		
-		//	Seventh number line.
-		case 15:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 16:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Eighth number line.
-		case 17:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Intersection line.
-		case 18:
-			std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
-		
-		//	Ninth number line.
-		case 19:
-			printNumbersLine(cellNumber);
-			cellNumber += 9;
-		
-		//	Bottom line.
-		case 20:
-			std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
-
-		std::cout << std::endl;
-	}		
+	//	Top row of boxes.
+	std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
+	printNumbersLine(0);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(9);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(18);
+	std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
+	
+	//	Middle row of boxes.
+	std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
+	printNumbersLine(27);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(36);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(45);
+	std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
+	
+	//	Bottom row of boxes.
+	std::cout << "┌───┬───┬───┐ ┌───┬───┬───┐ ┌───┬───┬───┐" << std::endl;
+	printNumbersLine(54);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(63);
+	std::cout << "├───┼───┼───┤ ├───┼───┼───┤ ├───┼───┼───┤" << std::endl;
+	printNumbersLine(72);
+	std::cout << "└───┴───┴───┘ └───┴───┴───┘ └───┴───┴───┘" << std::endl;
+	std::cout << std::endl;	
 }
 
 //	printNumbersLine	--	Prints a sudoku line with the numbers.

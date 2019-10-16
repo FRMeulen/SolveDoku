@@ -1,28 +1,25 @@
 /// <project> SolveDoku 2 </project>
 /// <author> F.R. van der Meulen </author>
-/// <summary> Cell Class </summary>
+/// <summary> Checker Class </summary>
 /// <date> 2019-10-16 </date>
 
 //- Class
-public class Cell
+public class Checker
 {
     //=== Properties
     private Sudoku linkedPuzzle;
-    private int index;
-    private int storedNumber;
 
     //=== Constructor
-    public Cell(Sudoku sudoku, int index)
+    public Checker(Sudoku sudoku)
     {
         this.linkedPuzzle = sudoku;
-        this.index = index;
     }
 
     //=== Methods
 
 
     //=== Getters
-    public int getIndex() { return index; }
+
 
     //=== Setters
 }

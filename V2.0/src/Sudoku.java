@@ -14,6 +14,7 @@ public class Sudoku
     private ZoneManager zoneManager;
     private ArrayList<Zone> zones;
     private Checker checker;
+    private Printer printer;
 
     //=== Constructor
     public Sudoku()
@@ -41,6 +42,9 @@ public class Sudoku
 
         // Create checker
         this.checker = new Checker(this);
+
+        // Create printer
+        this.printer = new Printer(this);
     }
 
     //=== Methods
@@ -80,6 +84,7 @@ public class Sudoku
         System.out.println(checkerMsg);
 
         this.zoneManager.debug(thorough);
+        this.printer.printSudoku();
     }
 
     //=== Getters

@@ -53,17 +53,17 @@ public class Zone
         //  Request cells based on type and index
         if (this.zoneType == ZoneType.Row)
         {
-            this.linkedPuzzle.getZoneManager().getRowCells(zoneIndex);
+            this.zoneCells = this.linkedPuzzle.getZoneManager().getRowCells(zoneIndex);
         }
 
         else if (this.zoneType == ZoneType.Column)
         {
-            this.linkedPuzzle.getZoneManager().getColumnCells(zoneIndex);
+            this.zoneCells = this.linkedPuzzle.getZoneManager().getColumnCells(zoneIndex);
         }
 
         else if (this.zoneType == ZoneType.Box)
         {
-            this.linkedPuzzle.getZoneManager().getBoxCells(zoneIndex);
+            this.zoneCells = this.linkedPuzzle.getZoneManager().getBoxCells(zoneIndex);
         }
     }
 

@@ -22,7 +22,9 @@ public class Cell
 
 
     //=== Getters
-    public int getIndex() { return index; }
+    public int getIndex() { return this.index; }
+    public int getStoredNumber() { return this.storedNumber;}
 
     //=== Setters
+    public void setStoredNumber(int number) { this.storedNumber = number; }
 }

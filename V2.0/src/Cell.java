@@ -35,6 +35,19 @@ public class Cell
             if (this.candidates.get(i) == candidate) this.candidates.remove(i);
     }
 
+    public void fill(int number)
+    {
+        // Strike candidates
+        for (int i = 0; i < this.candidates.size(); i++)
+        {
+            if (this.candidates.get(i) != number)
+                strikeCandidate(this.candidates.get(i));
+        }
+
+        // Set stored number
+        this.setStoredNumber(number);
+    }
+
     //=== Getters
     public int getIndex() { return this.index; }
     public int getStoredNumber() { return this.storedNumber; }

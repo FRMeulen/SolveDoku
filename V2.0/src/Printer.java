@@ -65,7 +65,8 @@ public class Printer
         // Fill sudoku with stored numbers
         for (int i = 0; i < 81; i++)
         {
-            sb.setCharAt(numberIndexes[i], (char)this.filledNumbers[i]);
+            if (this.filledNumbers[i] != 0)
+                sb.setCharAt(numberIndexes[i], Character.forDigit(this.filledNumbers[i], 10));
         }
 
         // Print sudoku
@@ -75,8 +76,6 @@ public class Printer
     public void update()
     {
         for (int i = 0; i < 81; i++)
-        {
             this.filledNumbers[i] = this.linkedPuzzle.getCell(i).getStoredNumber();
-        }
     }
 }

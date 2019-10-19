@@ -90,6 +90,7 @@ public class Sudoku
     //=== Getters
     public Cell getCell(int index) { return this.cells.get(index); }
     public ZoneManager getZoneManager() { return this.zoneManager; }
+    public Printer getPrinter() { return this.printer; }
     public Zone getRow(int index) { return this.getZone(index); }
     public Zone getColumn(int index) { return this.getZone(index + 9); }
     public Zone getBox(int index) { return this.getZone(index + 18); }

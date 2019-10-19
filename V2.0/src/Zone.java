@@ -4,7 +4,8 @@
 /// <date> 2019-10-16 </date>
 
 //- Imports
-import java.util.*;
+import java.util.ArrayList;
+import java.lang.Integer;
 
 //- Class
 public class Zone
@@ -14,6 +15,7 @@ public class Zone
     private ZoneType zoneType;
     private int zoneIndex;
     private ArrayList<Cell> zoneCells;
+    private ArrayList<Integer> containedNumbers;
 
     //=== Constructor
     public Zone(Sudoku sudoku, int index)
@@ -65,6 +67,9 @@ public class Zone
         {
             this.zoneCells = this.linkedPuzzle.getZoneManager().getBoxCells(zoneIndex);
         }
+
+        // Set self as cell zone
+        for (Cell cell : this.zoneCells) cell.setZone(this);
     }
 
     //=== Getters

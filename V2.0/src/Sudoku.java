@@ -4,7 +4,7 @@
 /// <date> 2019-10-16 </date>
 
 //- Imports
-import java.util.*;
+import java.util.ArrayList;
 
 //- Class
 public class Sudoku
@@ -90,6 +90,18 @@ public class Sudoku
     //=== Getters
     public Cell getCell(int index) { return this.cells.get(index); }
     public ZoneManager getZoneManager() { return this.zoneManager; }
+    public Zone getRow(int index) { return this.getZone(index); }
+    public Zone getColumn(int index) { return this.getZone(index + 9); }
+    public Zone getBox(int index) { return this.getZone(index + 18); }
+    
+    public Zone getZone(int index)
+    {
+        // Check for invalid indexes
+        if (index < 0 || index >= 27) return null;
+
+        // Fetch zone
+        return this.zones.get(index);
+    }
 
     //=== Setters
 }

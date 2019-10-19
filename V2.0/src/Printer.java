@@ -4,7 +4,7 @@
 /// <date> 2019-10-16 </date>
 
 //- Imports
-import java.lang.*;
+import java.lang.StringBuilder;
 
 //- Class
 public class Printer

@@ -16,7 +16,7 @@ public class Checker
     }
 
     //=== Methods
-
+    
 
     //=== Getters
 

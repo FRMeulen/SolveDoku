@@ -12,7 +12,9 @@ public class Cell
 {
     //=== Properties
     private Sudoku linkedPuzzle;
-    private Zone linkedZone;
+    private Zone linkedRow;
+    private Zone linkedColumn;
+    private Zone linkedBox;
     private int index;
     private int storedNumber;
     private ArrayList<Integer> candidates;
@@ -46,14 +48,23 @@ public class Cell
 
         // Set stored number
         this.setStoredNumber(number);
+
+        // Notify the zones
+        this.linkedRow.update();
+        this.linkedColumn.update();
+        this.linkedBox.update();
     }
 
     //=== Getters
     public int getIndex() { return this.index; }
     public int getStoredNumber() { return this.storedNumber; }
-    public Zone getZone() { return this.linkedZone; }
+    public Zone getRow() { return this.linkedRow; }
+    public Zone getColumn() { return this.linkedColumn; }
+    public Zone getBox() { return this.linkedBox; }
 
     //=== Setters
     public void setStoredNumber(int number) { this.storedNumber = number; }
-    public void setZone(Zone zone) { this.linkedZone = zone; }
+    public void setRow(Zone row) { this.linkedRow = row; }
+    public void setColumn(Zone column) { this.linkedColumn = column; }
+    public void setBox(Zone box) { this.linkedBox = box; }
 }

@@ -57,20 +57,23 @@ public class Zone
         if (this.zoneType == ZoneType.Row)
         {
             this.zoneCells = this.linkedPuzzle.getZoneManager().getRowCells(zoneIndex);
+            for (Cell cell : this.zoneCells)
+                cell.setRow(this);
         }
 
         else if (this.zoneType == ZoneType.Column)
         {
             this.zoneCells = this.linkedPuzzle.getZoneManager().getColumnCells(zoneIndex);
+            for (Cell cell : this.zoneCells)
+                cell.setColumn(this);
         }
 
         else if (this.zoneType == ZoneType.Box)
         {
             this.zoneCells = this.linkedPuzzle.getZoneManager().getBoxCells(zoneIndex);
+            for (Cell cell : this.zoneCells)
+                cell.setBox(this);
         }
-
-        // Set self as cell zone
-        for (Cell cell : this.zoneCells) cell.setZone(this);
     }
 
     //=== Public Methods

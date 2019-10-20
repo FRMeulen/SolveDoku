@@ -87,6 +87,12 @@ public class Sudoku
         this.printer.printSudoku();
     }
 
+    public void updateAll()
+    {
+        for (Zone zone : this.zones)
+            zone.update();
+    }
+
     //=== Getters
     public Cell getCell(int index) { return this.cells.get(index); }
     public ZoneManager getZoneManager() { return this.zoneManager; }

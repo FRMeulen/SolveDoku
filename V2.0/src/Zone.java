@@ -21,11 +21,12 @@ public class Zone
     public Zone(Sudoku sudoku, int index)
     {
         this.linkedPuzzle = sudoku;
+        this.containedNumbers = new ArrayList<Integer>();
         determineZoneType(index);
         requestCells();
     }
 
-    //=== Methods
+    //=== Private Methods
     private void determineZoneType(int index)
     {
        if (index < 9)
@@ -70,6 +71,29 @@ public class Zone
 
         // Set self as cell zone
         for (Cell cell : this.zoneCells) cell.setZone(this);
+    }
+
+    //=== Public Methods
+    public void update()
+    {
+        for (Cell cell : this.zoneCells)
+        {
+            if (cell.getStoredNumber() != 0 && !this.containedNumbers.contains(cell.getStoredNumber()))
+                this.containedNumbers.add(cell.getStoredNumber());
+        }
+    }
+
+    public void printProgress()
+    {
+        if (this.zoneType == ZoneType.Row) System.out.print("Row " + this.zoneIndex);
+        else if (this.zoneType == ZoneType.Column) System.out.print("Column " + this.zoneIndex);
+        else System.out.print("Box " + this.zoneIndex);
+        
+        System.out.print(" contains: ");
+        for (int number : this.containedNumbers)
+            System.out.print(number + " ");
+        
+        System.out.println();
     }
 
     //=== Getters

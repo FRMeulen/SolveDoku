@@ -30,6 +30,7 @@ public class Loader
 
         this.scanForNumbers();
         this.fillSudoku(target);
+        target.updateAll();
     }
 
     private String readSudokuFile(String source)

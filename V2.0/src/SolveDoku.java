@@ -13,5 +13,6 @@ public class SolveDoku
         Loader loader = new Loader();
         loader.loadSudoku(easySudokuPath, puzzle);
         puzzle.getPrinter().printSudoku();
+        
     }
 }

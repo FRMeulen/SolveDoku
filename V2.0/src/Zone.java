@@ -18,71 +18,30 @@ public class Zone
     private ArrayList<Integer> containedNumbers;
 
     //=== Constructor
-    public Zone(Sudoku sudoku, int index)
+    public Zone(Sudoku sudoku, ZoneType type, int index, ArrayList<Cell> cells)
     {
         this.linkedPuzzle = sudoku;
+        this.zoneType = type;
         this.containedNumbers = new ArrayList<Integer>();
-        determineZoneType(index);
-        requestCells();
-    }
-
-    //=== Private Methods
-    private void determineZoneType(int index)
-    {
-       if (index < 9)
-       {
-           this.zoneType = ZoneType.Row;
-           this.zoneIndex = index;
-       } 
-
-       else if (index >= 9 && index < 18)
-       {
-           this.zoneType = ZoneType.Column;
-           this.zoneIndex = index - 9;
-       }
-
-       else
-       {
-            this.zoneType = ZoneType.Box;
-            this.zoneIndex = index - 18;
-       }
-    }
-
-    private void requestCells()
-    {
-        // Check for NullPointer
-        if (this.linkedPuzzle == null) return;
-
-        //  Request cells based on type and index
-        if (this.zoneType == ZoneType.Row)
-        {
-            this.zoneCells = this.linkedPuzzle.getZoneManager().getRowCells(zoneIndex);
-            for (Cell cell : this.zoneCells)
-                cell.setRow(this);
-        }
-
-        else if (this.zoneType == ZoneType.Column)
-        {
-            this.zoneCells = this.linkedPuzzle.getZoneManager().getColumnCells(zoneIndex);
-            for (Cell cell : this.zoneCells)
-                cell.setColumn(this);
-        }
-
-        else if (this.zoneType == ZoneType.Box)
-        {
-            this.zoneCells = this.linkedPuzzle.getZoneManager().getBoxCells(zoneIndex);
-            for (Cell cell : this.zoneCells)
-                cell.setBox(this);
-        }
+        this.zoneIndex = index;
+        this.zoneCells = cells;
     }
 
     //=== Public Methods
     public void update()
     {
+        // Scan for contained numbers
         for (Cell cell : this.zoneCells)
         {
             if (cell.getStoredNumber() != 0 && !this.containedNumbers.contains(cell.getStoredNumber()))
                 this.containedNumbers.add(cell.getStoredNumber());
+        }
+
+        // Strike candidates from all cells
+        for (Cell cell : this.zoneCells)
+        {
+            for (int i : this.containedNumbers)
+                cell.strikeCandidate(i);
         }
     }
 
@@ -102,6 +61,6 @@ public class Zone
     //=== Getters
     public ZoneType getZoneType() { return this.zoneType; }
     public int getZoneIndex() { return this.zoneIndex; }
-
-    //=== Setters
+    public ArrayList<Integer> getContainedNumbers() { return this.containedNumbers; }
+    public ArrayList<Cell> getCells() { return this.zoneCells; }
 }

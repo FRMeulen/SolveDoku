@@ -91,6 +91,4 @@ public class Loader
     //== Getters
     public String getLoadedSudokuString() { return this.loadedSudokuString; }
     public int[] getLoadedNumbers() { return this.loadedNumbers; }
-
-    //=== Setters
 }

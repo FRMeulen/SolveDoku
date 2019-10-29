@@ -9,10 +9,12 @@ public class SolveDoku
     public static void main(String[] args)
     {
         Sudoku puzzle = new Sudoku();
-        String easySudokuPath = "./res/easy.txt";
+        String testPath = "./res/test.txt";
         Loader loader = new Loader();
-        loader.loadSudoku(easySudokuPath, puzzle);
+        loader.loadSudoku(testPath, puzzle);
         puzzle.getPrinter().printSudoku();
-        
+        puzzle.updateAll();
+        puzzle.getRuleManager().executeAll();
+        puzzle.getPrinter().printSudoku();
     }
 }

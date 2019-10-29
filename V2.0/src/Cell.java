@@ -49,7 +49,7 @@ public class Cell
         // Set stored number
         this.setStoredNumber(number);
 
-        // Notify the zones
+        // Update linked zones
         this.linkedRow.update();
         this.linkedColumn.update();
         this.linkedBox.update();
@@ -61,6 +61,7 @@ public class Cell
     public Zone getRow() { return this.linkedRow; }
     public Zone getColumn() { return this.linkedColumn; }
     public Zone getBox() { return this.linkedBox; }
+    public ArrayList<Integer> getCandidates() { return this.candidates; }
 
     //=== Setters
     public void setStoredNumber(int number) { this.storedNumber = number; }
